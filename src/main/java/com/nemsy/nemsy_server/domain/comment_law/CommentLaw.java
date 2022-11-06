@@ -13,7 +13,7 @@ public class CommentLaw extends BaseTimeEntity {
     private long id;
 
     @Column(columnDefinition = "TEXT")
-    private String comment;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "bill_id")
@@ -23,4 +23,15 @@ public class CommentLaw extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private CommentLaw(final Law law, final User author, String content) {
+        this.law = law;
+        this.user = author;
+        this.content = content;
+    }
+
+    public static CommentLaw newInstance(final Law law, final User author, String content) {
+        return new CommentLaw(law, author, content);
+    }
+
+    public CommentLaw(){};
 }

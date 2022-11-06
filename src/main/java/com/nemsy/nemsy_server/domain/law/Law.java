@@ -1,8 +1,10 @@
 package com.nemsy.nemsy_server.domain.law;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
-
+@Getter
 @Entity
 public class Law {
     @Id @Column(name = "bill_id")
@@ -10,7 +12,7 @@ public class Law {
     @Column(columnDefinition = "TEXT")
     private String detailLink;
     @Column(columnDefinition = "TEXT")
-    private String bill_name;
+    private String billName;
     @Column(columnDefinition = "TEXT")
     private String committee;
     @Column(columnDefinition = "TEXT")
@@ -30,6 +32,8 @@ public class Law {
     private int likeCount;
     @Column(columnDefinition = "bigint")
     private int dislikeCount;
+
+
 
     public Law() {
 
