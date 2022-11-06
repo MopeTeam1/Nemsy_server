@@ -1,4 +1,4 @@
-package com.nemsy.nemsy_server.service.law.dto;
+package com.nemsy.nemsy_server.service.law.dto.response;
 
 import com.nemsy.nemsy_server.domain.law.Law;
 

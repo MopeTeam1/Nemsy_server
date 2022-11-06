@@ -2,7 +2,7 @@ package com.nemsy.nemsy_server.service.law;
 
 import com.nemsy.nemsy_server.domain.law.Law;
 import com.nemsy.nemsy_server.domain.law.LawRepository;
-import com.nemsy.nemsy_server.service.law.dto.LawResponseDto;
+import com.nemsy.nemsy_server.service.law.dto.response.LawResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
