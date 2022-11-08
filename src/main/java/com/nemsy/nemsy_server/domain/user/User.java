@@ -1,8 +1,11 @@
 package com.nemsy.nemsy_server.domain.user;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class User {
     @Id @Column(name = "user_id")
     private String id;

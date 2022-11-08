@@ -2,9 +2,12 @@ package com.nemsy.nemsy_server.controller.comment_law;
 
 import com.nemsy.nemsy_server.controller.comment_law.dto.request.CommentReqDto;
 import com.nemsy.nemsy_server.service.comment_law.CommentLawService;
+import com.nemsy.nemsy_server.service.comment_law.dto.response.CommentLawResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,7 +19,8 @@ public class CommentLawController {
         commentLawService.writeComment(billId, authorId, commentReqDto);
     }
 
-//    public CommentLawController(final CommentLawService commentLawService) {
-//        this.commentLawService = commentLawService;
-//    }
+    @GetMapping(path = "/bill/${billId}/comments")
+    public ArrayList<CommentLawResponseDto> getComments(@PathVariable String billId) {
+        return commentLawService.getComments(billId);
+    }
 }
