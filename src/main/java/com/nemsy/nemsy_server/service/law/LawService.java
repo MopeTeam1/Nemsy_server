@@ -15,14 +15,15 @@ public class LawService {
 
     // find bill
     public LawResponseDto getBillCommunity(String billId, LawReqDto lawReqDto) {
-        Law law = lawRepository.findById(billId).orElse(() -> {
-            return createBillCommunity(billId, lawReqDto);
+        Law law = lawRepository.findById(billId).orElseGet(() -> {
+            createBillCommunity(lawReqDto);
+            return lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("새로운 소통창 생성에 실패 했습니다."));
         });
         return LawResponseDto.of(law);
     }
 
-    public LawResponseDto createBillCommunity(String billId, LawReqDto lawReqDto) {
+    public void createBillCommunity(LawReqDto lawReqDto) {
         Law law = LawRequestDto.toEntity(lawReqDto);
-        return
+        lawRepository.save(law);
     }
 }

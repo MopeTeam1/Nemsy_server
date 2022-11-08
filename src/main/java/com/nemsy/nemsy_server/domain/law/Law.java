@@ -1,5 +1,8 @@
 package com.nemsy.nemsy_server.domain.law;
 
+import com.nemsy.nemsy_server.controller.law.dto.request.LawReqDto;
+import com.nemsy.nemsy_server.domain.comment_law.CommentLaw;
+import com.nemsy.nemsy_server.domain.user.User;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -34,6 +37,24 @@ public class Law {
     private int dislikeCount;
 
 
+    private Law(LawReqDto lawReqDto) {
+        this.id = lawReqDto.getBillId();
+        this.detailLink = lawReqDto.getDetailLink();
+        this.billName = lawReqDto.getBillName();
+        this.committee = lawReqDto.getCommittee();
+        this.procResult = lawReqDto.getProcResult();
+        this.age = lawReqDto.getAge();
+        this.publProposer = lawReqDto.getPublProposer();
+        this.proposeDt = lawReqDto.getProposeDt();
+        this.rstProposer = lawReqDto.getRstProposer();
+        this.author = lawReqDto.getAuthor();
+        this.likeCount = 0;
+        this.dislikeCount = 0;
+    }
+
+    public static Law newInstance(LawReqDto lawReqDto) {
+        return new Law(lawReqDto);
+    }
 
     public Law() {
 

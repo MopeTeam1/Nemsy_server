@@ -18,12 +18,9 @@ public class LawResponseDto {
     private int likeCount;
     private int dislikeCount;
 
-
     public static LawResponseDto of(Law law) {
         return new LawResponseDto(law);
     }
-
-//    public static LawResponseDto of()
 
     private LawResponseDto(final Law law) {
         this.billId = law.getId();
