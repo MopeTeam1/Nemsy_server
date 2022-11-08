@@ -19,4 +19,9 @@ public class LikeLawController {
     public int unlikeLaw(@PathVariable String billId, @RequestParam String userId) {
         return likeLawService.unlikeLaw(billId, userId);
     }
+
+    @GetMapping("/bill/${billId}/likes")
+    public boolean isLikedLaw(@PathVariable String billId, @RequestParam String userId) {
+        return likeLawService.isLikedLaw(billId, userId);
+    }
 }

@@ -14,5 +14,5 @@ public interface LikeLawRepository extends JpaRepository<LikeLaw, Long> {
     @Query(value = "DELETE FROM likeLaw WHERE bill_id = :billId AND user_id = :userId", nativeQuery = true)
     void unlikeLaw(String billId, String userId);
 
-    LikeLaw findByPostIdAndUserId(Long postId, Long userId);
+    LikeLaw findByLawIdAndUserId(String billId, String userId);
 }
