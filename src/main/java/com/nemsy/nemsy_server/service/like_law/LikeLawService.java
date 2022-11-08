@@ -29,6 +29,14 @@ public class LikeLawService {
         return likeCount;
     }
 
+    @Transactional
+    public int unlikeLaw(final String billId, final String userId) {
+        likeLawRepository.unlikeLaw(billId, userId);
+        int likeCount = likeLawRepository.countByLawId(billId);
+        updateBillLikeCount(billId, likeCount);
+        return likeCount;
+    }
+
     public void updateBillLikeCount(String billId, int likeCount) {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
         law.setLikeCount(likeCount);
