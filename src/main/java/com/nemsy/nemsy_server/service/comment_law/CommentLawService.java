@@ -19,11 +19,11 @@ public class CommentLawService {
     private final LawRepository lawRepository;
     private final UserRepository userRepository;
 
-    public boolean writeComment(final String billId, final String authorId, CommentReqDto commentReqDto) {
+    public void writeComment(final String billId, final String authorId, CommentReqDto commentReqDto) {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
         User author = userRepository.findById(authorId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 user id 입니다."));
         CommentLaw newComment = CommentLawRequestDto.toEntity(law, author, commentReqDto);
         commentLawRepository.save(newComment);
-        return true;
+//        return true;
     }
 }
