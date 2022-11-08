@@ -18,7 +18,6 @@ public class LawResponseDto {
     private int likeCount;
     private int dislikeCount;
 
-
     public static LawResponseDto of(Law law) {
         return new LawResponseDto(law);
     }
