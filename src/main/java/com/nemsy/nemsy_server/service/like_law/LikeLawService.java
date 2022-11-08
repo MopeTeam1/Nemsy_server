@@ -2,6 +2,7 @@ package com.nemsy.nemsy_server.service.like_law;
 
 import com.nemsy.nemsy_server.domain.law.Law;
 import com.nemsy.nemsy_server.domain.law.LawRepository;
+import com.nemsy.nemsy_server.domain.like_law.LikeLaw;
 import com.nemsy.nemsy_server.domain.like_law.LikeLawRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +43,10 @@ public class LikeLawService {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
         law.setLikeCount(likeCount);
         lawRepository.save(law);
+    }
+
+    public boolean isLikedLaw(final String billId, final String userId) {
+        LikeLaw likeLaw = likeLawRepository.findByLawIdAndUserId(billId, userId);
+        return !Objects.isNull(likeLaw);
     }
 }
