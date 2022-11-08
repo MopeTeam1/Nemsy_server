@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private UserService userService;
-    @PostMapping
+    @PostMapping({"/user/register"})
     public void signUp(@RequestParam String userId, @RequestBody UserReqDto userReqDto) {
         userService.signUp(userId, userReqDto);
     }

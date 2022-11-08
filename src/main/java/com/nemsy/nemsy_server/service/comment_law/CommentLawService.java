@@ -8,9 +8,11 @@ import com.nemsy.nemsy_server.domain.law.LawRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
 import com.nemsy.nemsy_server.service.comment_law.dto.request.CommentLawRequestDto;
+import com.nemsy.nemsy_server.service.comment_law.dto.response.CommentLawResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +27,18 @@ public class CommentLawService {
         CommentLaw newComment = CommentLawRequestDto.toEntity(law, author, commentReqDto);
         commentLawRepository.save(newComment);
 //        return true;
+    }
+
+    public ArrayList<CommentLawResponseDto> getComments(final String billId) {
+        ArrayList<CommentLaw> commentLawList = commentLawRepository.findByLawIdOrderByCreatedAt(billId);
+
+        ArrayList<CommentLawResponseDto> result = new ArrayList<CommentLawResponseDto>();
+
+        for (CommentLaw commentLaw : commentLawList) {
+            CommentLawResponseDto tmp = CommentLawResponseDto.of(commentLaw);
+            result.add(tmp);
+        }
+
+        return result;
     }
 }
