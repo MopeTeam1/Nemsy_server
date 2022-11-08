@@ -26,4 +26,6 @@ public class LawService {
         Law law = LawRequestDto.toEntity(lawReqDto);
         lawRepository.save(law);
     }
+
+
 }

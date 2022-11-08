@@ -18,6 +18,17 @@ public class LikeLaw {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User User;
+    private User user;
+
+    private LikeLaw(final Law law, final User user) {
+        this.law = law;
+        this.user = user;
+    }
+
+    public LikeLaw(){};
+
+    public static LikeLaw newInstance(final Law law, final User user) {
+        return new LikeLaw(law,user);
+    }
 
 }

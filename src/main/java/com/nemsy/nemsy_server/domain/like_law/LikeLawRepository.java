@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LikeLawRepository extends JpaRepository<LikeLaw, Long> {
+    int countByLawId(String billId);
 }
