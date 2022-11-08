@@ -23,6 +23,8 @@ public class LawResponseDto {
         return new LawResponseDto(law);
     }
 
+//    public static LawResponseDto of()
+
     private LawResponseDto(final Law law) {
         this.billId = law.getId();
         this.detailLink = law.getDetailLink();
