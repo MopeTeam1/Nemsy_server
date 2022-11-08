@@ -25,22 +25,22 @@ public class DislikeLawService {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
         User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 user id 입니다."));
         dislikeLawRepository.save(DislikeLawRequestDto.toEntity(law, user));
-        int likeCount = dislikeLawRepository.countByLawId(billId);
-        updateBillDislikeCount(billId, likeCount);
-        return likeCount;
+        int dislikeCount = dislikeLawRepository.countByLawId(billId);
+        updateBillDislikeCount(billId, dislikeCount);
+        return dislikeCount;
     }
 
     @Transactional
     public int unDislikeLaw(final String billId, final String userId) {
         dislikeLawRepository.unDislikeLaw(billId, userId);
-        int likeCount = dislikeLawRepository.countByLawId(billId);
-        updateBillDislikeCount(billId, likeCount);
-        return likeCount;
+        int dislikeCount = dislikeLawRepository.countByLawId(billId);
+        updateBillDislikeCount(billId, dislikeCount);
+        return dislikeCount;
     }
 
-    public void updateBillDislikeCount(String billId, int likeCount) {
+    public void updateBillDislikeCount(String billId, int dislikeCount) {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
-        law.setLikeCount(likeCount);
+        law.setLikeCount(dislikeCount);
         lawRepository.save(law);
     }
 

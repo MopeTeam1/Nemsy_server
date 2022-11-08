@@ -16,4 +16,11 @@ public class UserService {
         User newUser = UserRequestDto.toEntity(userId, userReqDto);
         userRepository.save(newUser);
     }
+
+    public void changeNickname(final String userId, UserReqDto userReqDto) {
+        User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
+        String newNickname = userReqDto.getNickname();
+        user.setNickname(newNickname);
+        userRepository.save(user);
+    }
 }
