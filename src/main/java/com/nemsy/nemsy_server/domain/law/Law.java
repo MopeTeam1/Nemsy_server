@@ -12,28 +12,28 @@ import java.time.LocalDate;
 public class Law {
     @Id @Column(name = "bill_id")
     private String id;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String detailLink;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String billName;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String committee;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String procResult;
     // TODO age String 맞아?
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String age;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String publProposer;
     @Column
     private LocalDate proposeDt;
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String rstProposer;
     @Column
     private String author;
-    @Column(columnDefinition = "bigint")
+    @Column
     private int likeCount;
-    @Column(columnDefinition = "bigint")
+    @Column
     private int dislikeCount;
 
 

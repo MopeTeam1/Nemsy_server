@@ -19,7 +19,7 @@ public class CommentLawResponseDto {
     private CommentLawResponseDto(final CommentLaw commentLaw) {
         this.id = commentLaw.getId();
         this.content = commentLaw.getContent();
-        this.userId = commentLaw.getUser().getId();
+        this.userId = commentLaw.getAuthor().getId();
         this.billId = commentLaw.getLaw().getId();
         this.createdAt = commentLaw.getCreatedAt();
         this.modifiedAt = commentLaw.getModifiedAt();

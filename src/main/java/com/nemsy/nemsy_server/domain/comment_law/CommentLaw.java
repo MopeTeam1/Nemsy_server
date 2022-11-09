@@ -12,9 +12,9 @@ import javax.persistence.*;
 public class CommentLaw extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String content;
 
     @ManyToOne
@@ -23,11 +23,11 @@ public class CommentLaw extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User author;
 
     private CommentLaw(final Law law, final User author, String content) {
         this.law = law;
-        this.user = author;
+        this.author = author;
         this.content = content;
     }
 
