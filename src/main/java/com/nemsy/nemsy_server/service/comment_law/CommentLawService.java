@@ -13,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,16 +32,12 @@ public class CommentLawService {
 //        return true;
     }
 
-    public ArrayList<CommentLawResponseDto> getComments(final String billId) {
-        ArrayList<CommentLaw> commentLawList = commentLawRepository.findByLawIdOrderByCreatedAt(billId);
+    public List<CommentLawResponseDto> getComments(final String billId) {
+        List<CommentLaw> commentLawList = commentLawRepository.findCommentLawByLawId(billId);
 
-        ArrayList<CommentLawResponseDto> result = new ArrayList<CommentLawResponseDto>();
+        return commentLawList.stream()
+                .map(CommentLawResponseDto::of)
+                .collect(Collectors.toList());
 
-        for (CommentLaw commentLaw : commentLawList) {
-            CommentLawResponseDto tmp = CommentLawResponseDto.of(commentLaw);
-            result.add(tmp);
-        }
-
-        return result;
     }
 }

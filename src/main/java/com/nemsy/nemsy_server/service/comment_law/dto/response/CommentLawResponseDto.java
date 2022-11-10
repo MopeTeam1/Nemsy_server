@@ -1,9 +1,11 @@
 package com.nemsy.nemsy_server.service.comment_law.dto.response;
 
 import com.nemsy.nemsy_server.domain.comment_law.CommentLaw;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class CommentLawResponseDto {
     private Long id;
     private String content;

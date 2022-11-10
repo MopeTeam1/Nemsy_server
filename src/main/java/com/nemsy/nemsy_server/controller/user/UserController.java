@@ -1,24 +1,31 @@
 package com.nemsy.nemsy_server.controller.user;
 
-import com.nemsy.nemsy_server.controller.comment_law.dto.request.CommentReqDto;
 import com.nemsy.nemsy_server.controller.user.dto.request.UserReqDto;
 import com.nemsy.nemsy_server.service.user.UserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @RequiredArgsConstructor
+@RestController
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    @PostMapping("/user/register")
-    public void signUp(@RequestParam String userId, @RequestBody UserReqDto userReqDto) {
+    @ApiOperation("5")
+    @PostMapping("/user/register/{userId}")
+    public void signUp(@PathVariable String userId, @RequestBody UserReqDto userReqDto) {
         userService.signUp(userId, userReqDto);
     }
 
-    @PutMapping("/user/${userId}/nickname")
+    @ApiOperation("6")
+    @PutMapping("/user/{userId}/nickname")
     public void changeNickname(@PathVariable String userId, @RequestBody UserReqDto userReqDto) {
         userService.changeNickname(userId, userReqDto);
     }
+
+//    @GetMapping("user/test")
+//    public void test() {
+////        return "test";
+//    }
 }

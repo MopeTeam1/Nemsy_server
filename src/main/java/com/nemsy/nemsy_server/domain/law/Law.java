@@ -1,8 +1,6 @@
 package com.nemsy.nemsy_server.domain.law;
 
 import com.nemsy.nemsy_server.controller.law.dto.request.LawReqDto;
-import com.nemsy.nemsy_server.domain.comment_law.CommentLaw;
-import com.nemsy.nemsy_server.domain.user.User;
 import lombok.Getter;
 
 import javax.persistence.*;

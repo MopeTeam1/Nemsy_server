@@ -4,8 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface CommentLawRepository extends JpaRepository<CommentLaw, Long> {
-    ArrayList<CommentLaw> findByLawIdOrderByCreatedAt(String billId);
+    List<CommentLaw> findCommentLawByLawId(String billId);
 }
