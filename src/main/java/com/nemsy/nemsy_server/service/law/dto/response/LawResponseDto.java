@@ -8,15 +8,6 @@ import java.time.LocalDate;
 @Getter
 public class LawResponseDto {
     private String billId;
-    private String detailLink;
-    private String billName;
-    private String committee;
-    private String procResult;
-    private String age;
-    private String publProposer;
-    private LocalDate proposeDt;
-    private String rstProposer;
-    private String author;
     private int likeCount;
     private int dislikeCount;
 
@@ -26,14 +17,6 @@ public class LawResponseDto {
 
     private LawResponseDto(final Law law) {
         this.billId = law.getId();
-        this.detailLink = law.getDetailLink();
-        this.committee = law.getCommittee();
-        this.procResult = law.getProcResult();
-        this.age = law.getAge();
-        this.publProposer = law.getPublProposer();
-        this.proposeDt = law.getProposeDt();
-        this.rstProposer = law.getRstProposer();
-        this.author = law.getAuthor();
         this.likeCount = law.getLikeCount();
         this.dislikeCount = law.getDislikeCount();
     }
