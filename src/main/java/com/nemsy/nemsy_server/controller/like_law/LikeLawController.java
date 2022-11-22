@@ -10,20 +10,18 @@ import org.springframework.web.bind.annotation.*;
 public class LikeLawController {
 
     private final LikeLawService likeLawService;
-
-    @ApiOperation("2")
+    @ApiOperation("좋아요")
     @PostMapping("/bill/{billId}/{userId}/likes")
     public int likeLaw(@PathVariable String billId, @PathVariable String userId) {
         return likeLawService.likeLaw(billId, userId);
     }
-
-    @ApiOperation("2")
+    @ApiOperation("좋아요 취소")
     @DeleteMapping("/bill/{billId}/{userId}/likes")
     public int unlikeLaw(@PathVariable String billId, @PathVariable String userId) {
         return likeLawService.unlikeLaw(billId, userId);
     }
 
-    @ApiOperation("3")
+    @ApiOperation("좋아요 여부 가져오기")
     @GetMapping("/bill/{billId}/{userId}/likes")
     public boolean isLikedLaw(@PathVariable String billId, @PathVariable String userId) {
         return likeLawService.isLikedLaw(billId, userId);

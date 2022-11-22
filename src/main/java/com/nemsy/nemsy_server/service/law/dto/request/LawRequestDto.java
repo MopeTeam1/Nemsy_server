@@ -5,7 +5,7 @@ import com.nemsy.nemsy_server.domain.law.Law;
 
 public class LawRequestDto {
 
-    public static Law toEntity(LawReqDto lawReqDto) {
-        return Law.newInstance(lawReqDto);
+    public static Law toEntity(String billId) {
+        return Law.newInstance(billId);
     }
 }

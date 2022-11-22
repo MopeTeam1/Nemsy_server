@@ -40,7 +40,7 @@ public class DislikeLawService {
 
     public void updateBillDislikeCount(String billId, int dislikeCount) {
         Law law = lawRepository.findById(billId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 bill id 입니다."));
-        law.setLikeCount(dislikeCount);
+        law.setDislikeCount(dislikeCount);
         lawRepository.save(law);
     }
 

@@ -16,10 +16,9 @@ public class LawController {
 
     private final LawService lawService;
 
-    // find bill
-    @ApiOperation("1")
+    @ApiOperation("법률안 가져오기")
     @GetMapping({"/bill/{billId}"})
-    public LawResponseDto getBillCommunity(@PathVariable String billId, @RequestBody LawReqDto lawReqDto) {
-        return this.lawService.getBillCommunity(billId, lawReqDto);
+    public LawResponseDto getBillCommunity(@PathVariable String billId) {
+        return this.lawService.getBillCommunity(billId);
     }
 }

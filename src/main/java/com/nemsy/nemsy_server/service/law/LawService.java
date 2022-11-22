@@ -18,9 +18,9 @@ public class LawService {
 
     // find bill
     @Transactional
-    public LawResponseDto getBillCommunity(String billId, LawReqDto lawReqDto) {
+    public LawResponseDto getBillCommunity(String billId) {
         Law law = lawRepository.findById(billId).orElseGet(() -> {
-            String newBillId = createBillCommunity(lawReqDto);
+            String newBillId = createBillCommunity(billId);
             return lawRepository.findById(newBillId).orElseThrow(()-> new IllegalArgumentException("새로운 소통창 생성에 실패 했습니다."));
         });
 
@@ -37,8 +37,8 @@ public class LawService {
     }
 
     @Transactional
-    public String createBillCommunity(LawReqDto lawReqDto) {
-        Law law = LawRequestDto.toEntity(lawReqDto);
+    public String createBillCommunity(String billId) {
+        Law law = LawRequestDto.toEntity(billId);
         lawRepository.save(law);
         return law.getId();
     }
