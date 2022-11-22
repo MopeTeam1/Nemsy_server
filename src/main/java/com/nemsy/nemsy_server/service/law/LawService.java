@@ -1,6 +1,5 @@
 package com.nemsy.nemsy_server.service.law;
 
-import com.nemsy.nemsy_server.controller.law.dto.request.LawReqDto;
 import com.nemsy.nemsy_server.domain.law.Law;
 import com.nemsy.nemsy_server.domain.law.LawRepository;
 import com.nemsy.nemsy_server.service.law.dto.request.LawRequestDto;

@@ -1,6 +1,5 @@
 package com.nemsy.nemsy_server.controller.law;
 
-import com.nemsy.nemsy_server.controller.law.dto.request.LawReqDto;
 import com.nemsy.nemsy_server.service.law.LawService;
 import com.nemsy.nemsy_server.service.law.dto.response.LawResponseDto;
 import io.swagger.annotations.ApiOperation;
