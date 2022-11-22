@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,11 +15,13 @@ import java.util.List;
 public class CommentLawController {
 
     private final CommentLawService commentLawService;
+    @ApiOperation("법률안 소통창 댓글 작성")
     @PostMapping(path = "/bill/{billId}/{authorId}/comments", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void writeComment(@PathVariable String billId, @PathVariable String authorId, @RequestBody CommentReqDto commentReqDto) {
         commentLawService.writeComment(billId, authorId, commentReqDto);
     }
 
+    @ApiOperation("법률안 소통창 댓글 모두 가져오기")
     @GetMapping(path = "/bill/{billId}/comments")
     public List<CommentLawResponseDto> getComments(@PathVariable String billId) {
         return commentLawService.getComments(billId);

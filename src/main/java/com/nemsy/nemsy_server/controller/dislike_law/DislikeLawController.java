@@ -11,18 +11,18 @@ public class DislikeLawController {
 
     private final DislikeLawService dislikeLawService;
 
-    @ApiOperation("dislike")
+    @ApiOperation("싫어요")
     @PostMapping("/bill/{billId}/{userId}/dislikes")
     public int dislikeLaw(@PathVariable String billId, @PathVariable String userId) {
         return dislikeLawService.dislikeLaw(billId, userId);
     }
-    @ApiOperation("deleteDislike")
+    @ApiOperation("싫어요 취소")
     @DeleteMapping("/bill/{billId}/{userId}/dislikes")
     public int unDislikeLaw(@PathVariable String billId, @PathVariable String userId) {
         return dislikeLawService.unDislikeLaw(billId, userId);
     }
 
-    @ApiOperation("isDisliked")
+    @ApiOperation("싫어요 여부 가져오기")
     @GetMapping("/bill/{billId}/{userId}/dislikes")
     public boolean isDislikedLaw(@PathVariable String billId, @PathVariable String userId) {
         return dislikeLawService.isDislikedLaw(billId, userId);

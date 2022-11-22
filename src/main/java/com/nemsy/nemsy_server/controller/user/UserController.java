@@ -12,13 +12,13 @@ public class UserController {
 
     private final UserService userService;
 
-    @ApiOperation("5")
+    @ApiOperation("회원 등록")
     @PostMapping("/user/register/{userId}")
     public void signUp(@PathVariable String userId, @RequestBody UserReqDto userReqDto) {
         userService.signUp(userId, userReqDto);
     }
 
-    @ApiOperation("6")
+    @ApiOperation("닉에임 변경")
     @PutMapping("/user/{userId}/nickname")
     public void changeNickname(@PathVariable String userId, @RequestBody UserReqDto userReqDto) {
         userService.changeNickname(userId, userReqDto);
