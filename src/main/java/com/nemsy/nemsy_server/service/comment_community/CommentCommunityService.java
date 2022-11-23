@@ -8,8 +8,12 @@ import com.nemsy.nemsy_server.domain.post.PostRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
 import com.nemsy.nemsy_server.service.comment_community.dto.request.CommentCommunityDto;
+import com.nemsy.nemsy_server.service.comment_community.dto.response.CommentCommunityResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,5 +26,14 @@ public class CommentCommunityService {
         User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 user id 입니다."));
         CommentCommunity newComment = CommentCommunityDto.toEntity(post, user, commentRequest);
         commentCommunityRepository.save(newComment);
+    }
+
+    public List<CommentCommunityResponseDto> getComments(final Long postId) {
+        List<CommentCommunity> commentCommunityList = commentCommunityRepository.findCommentCommunityByPostId(postId);
+
+        return commentCommunityList.stream()
+                .map(CommentCommunityResponseDto::of)
+                .collect(Collectors.toList());
+
     }
 }
