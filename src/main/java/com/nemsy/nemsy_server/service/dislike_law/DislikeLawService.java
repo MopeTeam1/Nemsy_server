@@ -44,7 +44,7 @@ public class DislikeLawService {
         lawRepository.save(law);
     }
 
-    public boolean isDislikedLaw(final String billId, final String userId) {
+    public boolean isLawDisliked(final String billId, final String userId) {
         DislikeLaw dislikeLaw = dislikeLawRepository.findByLawIdAndUserId(billId, userId);
         return !Objects.isNull(dislikeLaw);
     }
