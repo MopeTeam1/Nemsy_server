@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Post {
+public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
@@ -24,16 +24,15 @@ public class Post {
     @Column
     private int likeCount;
 
-    public Post(long postId, String title, User author, String content) {
-        this.id = postId;
+    public Post(String title, User author, String content) {
         this.title = title;
         this.author = author;
         this.content = content;
         this.likeCount = 0;
     }
 
-    public static Post newInstance(long postId, String title, User author, String content) {
-        return new Post(postId, title, author, content);
+    public static Post newInstance(String title, User author, String content) {
+        return new Post(title, author, content);
     }
 
     public void setLikeCount(int likeCount) {
