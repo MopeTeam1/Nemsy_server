@@ -1,5 +1,6 @@
 package com.nemsy.nemsy_server.domain.post;
 
+import com.nemsy.nemsy_server.domain.common.BaseTimeEntity;
 import com.nemsy.nemsy_server.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
