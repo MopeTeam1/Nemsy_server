@@ -45,7 +45,7 @@ public class LikeLawService {
         lawRepository.save(law);
     }
 
-    public boolean isLikedLaw(final String billId, final String userId) {
+    public boolean isLawLiked(final String billId, final String userId) {
         LikeLaw likeLaw = likeLawRepository.findByLawIdAndUserId(billId, userId);
         return !Objects.isNull(likeLaw);
     }

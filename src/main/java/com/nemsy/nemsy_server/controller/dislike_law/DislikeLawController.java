@@ -24,7 +24,7 @@ public class DislikeLawController {
 
     @ApiOperation("싫어요 여부 가져오기")
     @GetMapping("/bill/{billId}/{userId}/dislikes")
-    public boolean isDislikedLaw(@PathVariable String billId, @PathVariable String userId) {
-        return dislikeLawService.isDislikedLaw(billId, userId);
+    public boolean isLawDisliked(@PathVariable String billId, @PathVariable String userId) {
+        return dislikeLawService.isLawDisliked(billId, userId);
     }
 }
