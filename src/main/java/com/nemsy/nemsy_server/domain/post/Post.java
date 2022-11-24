@@ -25,7 +25,7 @@ public class Post extends BaseTimeEntity {
     @Column
     private int likeCount;
 
-    public Post(String title, User author, String content) {
+    private Post(String title, User author, String content) {
         this.title = title;
         this.author = author;
         this.content = content;

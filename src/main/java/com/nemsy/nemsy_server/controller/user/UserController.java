@@ -18,7 +18,7 @@ public class UserController {
         userService.signUp(userId, userReqDto);
     }
 
-    @ApiOperation("닉에임 변경")
+    @ApiOperation("닉네임 변경")
     @PutMapping("/user/{userId}/nickname")
     public void changeNickname(@PathVariable String userId, @RequestBody UserReqDto userReqDto) {
         userService.changeNickname(userId, userReqDto);

@@ -6,8 +6,14 @@ import com.nemsy.nemsy_server.domain.post.PostRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
 import com.nemsy.nemsy_server.service.post.dto.request.PostDto;
+import com.nemsy.nemsy_server.service.post.dto.response.PostResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +25,17 @@ public class PostService {
         User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 user id 입니다."));
         Post newPost = PostDto.toEntity(user, postRequest);
         postRepository.save(newPost);
+    }
+
+    public List<PostResponseDto> getPosts(Pageable pageable) {
+        Page<Post> postList = postRepository.findAllByOrderByCreatedAt(pageable);
+        return postList.stream()
+                .map(PostResponseDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public PostResponseDto getPost(final Long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 post id 입니다."));
+        return PostResponseDto.of(post);
     }
 }
