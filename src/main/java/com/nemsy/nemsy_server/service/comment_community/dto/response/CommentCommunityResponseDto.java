@@ -10,6 +10,7 @@ public class CommentCommunityResponseDto {
     private Long id;
     private String content;
     private String userId;
+    private String userNickname;
     private Long postId;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
@@ -22,6 +23,7 @@ public class CommentCommunityResponseDto {
         this.id = commentCommunity.getId();
         this.content = commentCommunity.getContent();
         this.userId = commentCommunity.getAuthor().getId();
+        this.userNickname = commentCommunity.getAuthor().getNickname();
         this.postId = commentCommunity.getPost().getId();
         this.createdAt = commentCommunity.getCreatedAt();
         this.modifiedAt = commentCommunity.getModifiedAt();
