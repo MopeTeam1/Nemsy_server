@@ -10,6 +10,7 @@ public class CommentLawResponseDto {
     private Long id;
     private String content;
     private String userId;
+    private String userNickname;
     private String billId;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
@@ -22,6 +23,7 @@ public class CommentLawResponseDto {
         this.id = commentLaw.getId();
         this.content = commentLaw.getContent();
         this.userId = commentLaw.getAuthor().getId();
+        this.userNickname = commentLaw.getAuthor().getNickname();
         this.billId = commentLaw.getLaw().getId();
         this.createdAt = commentLaw.getCreatedAt();
         this.modifiedAt = commentLaw.getModifiedAt();
