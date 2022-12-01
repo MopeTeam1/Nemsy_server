@@ -6,6 +6,7 @@ import com.nemsy.nemsy_server.domain.post.PostRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
 import com.nemsy.nemsy_server.service.post.dto.request.PostDto;
+import com.nemsy.nemsy_server.service.post.dto.response.PostListResDto;
 import com.nemsy.nemsy_server.service.post.dto.response.PostResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,11 +28,13 @@ public class PostService {
         postRepository.save(newPost);
     }
 
-    public List<PostResponseDto> getPosts(Pageable pageable) {
-        Page<Post> postList = postRepository.findAllByOrderByCreatedAt(pageable);
-        return postList.stream()
-                .map(PostResponseDto::of)
-                .collect(Collectors.toList());
+    public PostListResDto getPosts(Pageable pageable) {
+        Page<Post> posts = postRepository.findAllByOrderByCreatedAtDesc(pageable);
+        List<PostResponseDto> postList = posts.stream()
+                                    .map(PostResponseDto::of)
+                                    .collect(Collectors.toList());
+        Long postCnt = postRepository.count();
+        return PostListResDto.of(postCnt, postList);
     }
 
     public PostResponseDto getPost(final Long postId) {
