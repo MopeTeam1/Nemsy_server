@@ -1,5 +1,6 @@
 package com.nemsy.nemsy_server.controller.like_law;
 
+import com.nemsy.nemsy_server.dto.common_dto.LikeRequestDto;
 import com.nemsy.nemsy_server.service.like_law.LikeLawService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ public class LikeLawController {
     private final LikeLawService likeLawService;
     @ApiOperation("법률안 좋아요")
     @PostMapping("/bill/{billId}/{userId}/likes")
-    public int likeLaw(@PathVariable String billId, @PathVariable String userId) {
+    public int likeLaw(@PathVariable String billId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
         return likeLawService.likeLaw(billId, userId);
     }
     @ApiOperation("법률안 좋아요 취소")

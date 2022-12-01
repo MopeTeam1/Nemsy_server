@@ -2,6 +2,7 @@ package com.nemsy.nemsy_server.controller.post;
 
 import com.nemsy.nemsy_server.controller.post.dto.request.PostRequest;
 import com.nemsy.nemsy_server.service.post.PostService;
+import com.nemsy.nemsy_server.service.post.dto.response.PostListResDto;
 import com.nemsy.nemsy_server.service.post.dto.response.PostResponseDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class PostController {
 
     @ApiOperation("커뮤니티 게시글 페이지네이션")
     @GetMapping("/board")
-    public List<PostResponseDto> getPosts(@PageableDefault(size=6) Pageable pageable) {
+    public PostListResDto getPosts(@PageableDefault(size=6) Pageable pageable) {
         return postService.getPosts(pageable);
     }
 
