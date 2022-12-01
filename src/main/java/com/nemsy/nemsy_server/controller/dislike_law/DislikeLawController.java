@@ -19,7 +19,7 @@ public class DislikeLawController {
     }
     @ApiOperation("싫어요 취소")
     @DeleteMapping("/bill/{billId}/{userId}/dislikes")
-    public int unDislikeLaw(@PathVariable String billId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
+    public int unDislikeLaw(@PathVariable String billId, @PathVariable String userId) {
         return dislikeLawService.unDislikeLaw(billId, userId);
     }
 

@@ -20,7 +20,7 @@ public class LikePostController {
 
     @ApiOperation("게시글 좋아요 취소")
     @DeleteMapping("/board/{postId}/{userId}/likes")
-    public int unLikePost(@PathVariable Long postId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
+    public int unLikePost(@PathVariable Long postId, @PathVariable String userId) {
         return likePostService.unlikePost(postId, userId);
     }
 

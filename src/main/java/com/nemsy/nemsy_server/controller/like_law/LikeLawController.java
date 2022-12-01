@@ -18,7 +18,7 @@ public class LikeLawController {
     }
     @ApiOperation("법률안 좋아요 취소")
     @DeleteMapping("/bill/{billId}/{userId}/likes")
-    public int unlikeLaw(@PathVariable String billId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
+    public int unlikeLaw(@PathVariable String billId, @PathVariable String userId) {
         return likeLawService.unlikeLaw(billId, userId);
     }
 
