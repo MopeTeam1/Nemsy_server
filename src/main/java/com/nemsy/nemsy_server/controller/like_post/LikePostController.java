@@ -1,5 +1,6 @@
 package com.nemsy.nemsy_server.controller.like_post;
 
+import com.nemsy.nemsy_server.dto.common_dto.LikeRequestDto;
 import com.nemsy.nemsy_server.service.like_post.LikePostService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ public class LikePostController {
 
     @ApiOperation("게시글 좋아요")
     @PostMapping("/board/{postId}/{userId}/likes")
-    public int likePost(@PathVariable Long postId, @PathVariable String userId) {
+    public int likePost(@PathVariable Long postId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
         return likePostService.likePost(postId, userId);
     }
 
