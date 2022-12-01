@@ -1,5 +1,6 @@
 package com.nemsy.nemsy_server.controller.dislike_law;
 
+import com.nemsy.nemsy_server.dto.common_dto.LikeRequestDto;
 import com.nemsy.nemsy_server.service.dislike_law.DislikeLawService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,12 @@ public class DislikeLawController {
 
     @ApiOperation("싫어요")
     @PostMapping("/bill/{billId}/{userId}/dislikes")
-    public int dislikeLaw(@PathVariable String billId, @PathVariable String userId) {
+    public int dislikeLaw(@PathVariable String billId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
         return dislikeLawService.dislikeLaw(billId, userId);
     }
     @ApiOperation("싫어요 취소")
     @DeleteMapping("/bill/{billId}/{userId}/dislikes")
-    public int unDislikeLaw(@PathVariable String billId, @PathVariable String userId) {
+    public int unDislikeLaw(@PathVariable String billId, @PathVariable String userId, @RequestBody LikeRequestDto likeRequestDto) {
         return dislikeLawService.unDislikeLaw(billId, userId);
     }
 
