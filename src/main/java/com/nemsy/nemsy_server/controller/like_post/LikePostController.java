@@ -2,6 +2,7 @@ package com.nemsy.nemsy_server.controller.like_post;
 
 import com.nemsy.nemsy_server.dto.common_dto.LikeRequestDto;
 import com.nemsy.nemsy_server.service.like_post.LikePostService;
+import com.nemsy.nemsy_server.service.like_post.dto.response.LikePostResponseDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class LikePostController {
 
     @ApiOperation("게시글 좋아요 여부 가져오기")
     @GetMapping("/board/{postId}/{userId}/likes")
-    public boolean isPostLiked(@PathVariable Long postId, @PathVariable String userId) {
+    public LikePostResponseDto isPostLiked(@PathVariable Long postId, @PathVariable String userId) {
         return likePostService.isPostLiked(postId, userId);
     }
 }

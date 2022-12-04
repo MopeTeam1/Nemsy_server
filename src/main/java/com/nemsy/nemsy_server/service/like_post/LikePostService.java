@@ -7,6 +7,7 @@ import com.nemsy.nemsy_server.domain.post.PostRepository;
 import com.nemsy.nemsy_server.domain.user.User;
 import com.nemsy.nemsy_server.domain.user.UserRepository;
 import com.nemsy.nemsy_server.service.like_post.dto.request.LikePostRequestDto;
+import com.nemsy.nemsy_server.service.like_post.dto.response.LikePostResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,10 @@ public class LikePostService {
         postRepository.save(post);
     }
 
-    public boolean isPostLiked(final Long postId, final String userId) {
+    public LikePostResponseDto isPostLiked(final Long postId, final String userId) {
         LikePost likePost = likePostRepository.findByPostIdAndUserId(postId, userId);
-        return !Objects.isNull(likePost);
+        boolean isLiked = !Objects.isNull(likePost);
+        int likeCount = likePostRepository.countByPostId(postId);
+        return LikePostResponseDto.of(likeCount, isLiked);
     }
 }
